@@ -5,6 +5,8 @@ export class ImageGalleryItem extends Component {
   continue = (e) => {
     e.preventDefault();
 };
+
+
   render() {
     const {picturesFound, state, handleImageClick} = this.props
     return (
@@ -14,8 +16,8 @@ export class ImageGalleryItem extends Component {
         picturesFound.map((pic)=>{
           return(
             
-            <li className="ImageGalleryItem" key={pic.id} onClick={handleImageClick} >
-            <img className="ImageGalleryItem-image" src={pic.previewURL} alt="none" />
+            <li className="ImageGalleryItem" key={pic.id} onClick={()=>handleImageClick(pic.largeImageURL)} >
+            <img className="ImageGalleryItem-image" src={pic.webformatURL} alt="none" />
             </li>
 
             

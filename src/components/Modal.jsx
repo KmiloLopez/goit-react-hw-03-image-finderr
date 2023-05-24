@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { createPortal } from 'react-dom';
 
-
+const modalWindow =document.querySelector('#modal-window')
 export class Modal extends Component {
     /* constructor(props) {
         super(props);
@@ -23,29 +23,26 @@ export class Modal extends Component {
         }
       };
       handleBackdropClick = event => {
-        if (event.currentTarget === event.target) {
+        if (event.currentTarget !== event.target) {
           this.props.setModalClose();
         }
       };
     
   render() {
-    const {setModalClose, selectedImage}=this.props;
+    const {selectedImage}=this.props;
     return (
         <>
-        {/* {console.log("modal opened")} */}
-       
+              
         {createPortal(
           <div className="Overlay">
           <div className="Modal" onClick={this.handleBackdropClick}>
           <img src={selectedImage} alt="Imagen" />
             
           </div>
-          <button onClick={setModalClose}>
-        Cerrar imagen
-      </button>
+          
         </div>
-          ,
-          document.body
+        ,
+          modalWindow,
         )}
       
       </>
