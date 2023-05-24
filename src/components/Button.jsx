@@ -9,7 +9,7 @@ export class Button extends Component {
       const {LoadMore, picturesFound} = this.props
       return (
         <>
-        {picturesFound===''?null:<Buttonn type="button"onClick={LoadMore}>Load More
+        {picturesFound&&<Buttonn type="button"onClick={LoadMore}>Load More
         </Buttonn>}
         
 

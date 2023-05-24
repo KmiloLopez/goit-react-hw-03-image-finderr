@@ -44,7 +44,7 @@ export class App extends Component {
   };
   onLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
-    this.fetchInfo();
+    
     window.scrollTo({
       top:document.documentElement.scrollHeight,
       behavior:"smooth",
@@ -52,13 +52,24 @@ export class App extends Component {
   };
 
    componentDidUpdate(prevProps, prevState) {
+    const { searchThis } = this.state;
     if (
       prevState.searchThis !== this.state.searchThis ||
       prevState.page !== this.state.page
     ) {
+      if(prevState.searchThis !== this.state.searchThis){
+        this.setState({
+          picturesFound: '',
+          page: 1,
+        })
+      }
+      if(searchThis!==''){
       this.fetchInfo();
       console.log('hizo this.fetchInfo');
     }
+    }
+    
+   
   } 
 
   
@@ -97,7 +108,9 @@ export class App extends Component {
       });
   };
   async fetchcall(){
+    
     const { searchThis } = this.state;
+   
     const searchme = encodeURIComponent(searchThis);
     this.setState({ loadingImages: 'true' });
     return await fetch(

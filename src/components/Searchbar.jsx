@@ -19,6 +19,7 @@ export class Searchbar extends Component {
             placeholder="Search images and photos"
             
             onChange={handleInput}
+            onKeyUp={handleInput}
           />
         </form>
       </header>
